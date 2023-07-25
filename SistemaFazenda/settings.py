@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,11 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Gado',
 ]
-JAZZMIN_SETTINGS = {
-    "site_title": "Fazenda Alto Praíso",  # Altere para o título do seu site
-    "site_header": "Fazenda Alto Praíso",  # Altere para o cabeçalho do seu site
-    "search_model": "Gado.Animal",  # Altere para o modelo que você deseja pesquisar no painel (opcional)
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
