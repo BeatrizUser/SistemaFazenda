@@ -122,9 +122,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = './static/'
-# Defina o diretório onde os arquivos estáticos serão coletados
-STATIC_ROOT = './static/'
+# Define a URL para os arquivos estáticos
+STATIC_URL = '/static/'
+
+# Define o diretório absoluto onde os arquivos estáticos serão coletados
+STATIC_ROOT = '/home/bia/Desktop/Projetos/Coding/SistemaFazenda/static/'  # Substitua pelo caminho correto em seu servidor
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
