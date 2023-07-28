@@ -8,4 +8,6 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('', RedirectView.as_view(url='/dashboard/')),
     path('', include('admin_material.urls')),
+    path('admin/Gado/animal/<str:brinco>/change/', views.edit_animal, name='edit_animal'),
+    path('importar_animais/', views.importar_animais, name='importar_animais'),
 ]
