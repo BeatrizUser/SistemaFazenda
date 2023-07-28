@@ -1,0 +1,26 @@
+# render.yaml
+
+# Configurações gerais
+name: Fazenda Alto Paraiso
+env: 
+  - key: DJANGO_SETTINGS_MODULE
+    value: "SistemaFazenda.settings"
+
+buildCommand: pip install -r requirements.txt
+startCommand: gunicorn SistemaFazenda.wsgi
+
+# Configuração do Nginx
+nginx:
+  locations:
+    /static/:
+      expires: 1d
+      add_header Cache-Control "public"
+      add_header Content-Type "text/css; charset=utf-8"
+    /static/js/:
+      expires: 1d
+      add_header Cache-Control "public"
+      add_header Content-Type "application/javascript; charset=utf-8"
+    /static/other/:
+      expires: 1d
+      add_header Cache-Control "public"
+      add_header Content-Type "application/octet-stream"
