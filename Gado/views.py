@@ -14,6 +14,7 @@ def dashboard(request):
     latest_actions = LogEntry.objects.filter(content_type=content_type).order_by('-action_time')[:10]
     total_animais = animais.count()
     total_nelore = animais.filter(raca__nome='NELORE').count()
+    total_idade1 = animais.filter(idade='1').count()
     total_macho = animais.filter(sexo='M').count()
     total_femea = animais.filter(sexo='F').count()
 
@@ -43,6 +44,7 @@ def dashboard(request):
         'total_nelore': total_nelore,
         'total_macho': total_macho,
         'total_femea': total_femea,
+        'total_idade1': total_idade1,
     }
 
     return render(request, 'pages/index.html', context)
