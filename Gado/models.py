@@ -44,7 +44,6 @@ class Animal(models.Model):
     data_compra = models.DateField(null=True, blank=True)
     data_nascimento = models.DateField(null=True, blank=True)
     raca = models.ForeignKey('Raca', on_delete=models.SET_NULL, null=True, blank=True)
-    tipo = models.ForeignKey('Tipo', on_delete=models.SET_NULL, null=True, blank=True)
     idade = models.IntegerField(null=True, blank=True)
     status = models.ForeignKey('StatusAnimal', on_delete=models.SET_NULL, null=True, blank=True)
     pasto = models.ForeignKey('Pasto', on_delete=models.SET_NULL, null=True, blank=True)
@@ -59,9 +58,26 @@ class Animal(models.Model):
     data_morte = models.DateField(null=True, blank=True)
     motivo_morte = models.ForeignKey('CausaMorte', on_delete=models.SET_NULL, null=True, blank=True)
 
-    def __str__(self):
-        return self.brinco
-
+    @property
+    def tipo(self):
+        if self.sexo == 'F':
+            if 0 <= self.idade <= 12:
+                return 'Bezerra'
+            elif 13 <= self.idade <= 24:
+                return 'Novilha'
+            elif 25 <= self.idade <= 36:
+                return 'Vaca'
+            elif self.idade > 36:
+                return 'Vaca acima de 36 meses'
+        elif self.sexo == 'M':
+            if 0 <= self.idade <= 14:
+                return 'Bezerro'
+            elif 15 <= self.idade <= 24:
+                return 'Novilho'
+            elif self.idade >= 25:
+                return 'Touro'
+        return None
+        
     class Meta:
         verbose_name_plural = 'Animais'
 

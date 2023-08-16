@@ -17,6 +17,12 @@ def dashboard(request):
     total_idade1 = animais.filter(idade='1').count()
     total_macho = animais.filter(sexo='M').count()
     total_femea = animais.filter(sexo='F').count()
+    total_bezerras = animais.filter(sexo='F', idade__range=(0, 12)).count()
+    total_novilhas = animais.filter(sexo='F', idade__range=(13, 24)).count()
+    total_vacas = animais.filter(sexo='F', idade__range=(25, 36)).count()
+    total_bezerros = animais.filter(sexo='M', idade__range=(0, 12)).count()
+    total_novilhos = animais.filter(sexo='M', idade__range=(13, 24)).count()
+    total_touros = animais.filter(sexo='M', idade__range=(25, 36)).count()
 
     # Função para obter o valor do arroba
     def get_arroba_value():
@@ -45,6 +51,12 @@ def dashboard(request):
         'total_macho': total_macho,
         'total_femea': total_femea,
         'total_idade1': total_idade1,
+        'total_bezerras': total_bezerras,
+        'total_novilhas': total_novilhas,
+        'total_vacas': total_vacas,
+        'total_bezerros': total_bezerros,
+        'total_novilhos': total_novilhos,
+        'total_touros': total_touros,
     }
 
     return render(request, 'pages/index.html', context)
